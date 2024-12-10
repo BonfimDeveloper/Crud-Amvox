@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import {
   getEventosSemParametros,
@@ -12,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
 import SpinnerLoading from "../components/SpinnerLoading";
-
-
 
 // Configuração do Modal
 Modal.setAppElement("#root"); // Necessário para acessibilidade
@@ -38,7 +33,6 @@ const TabelaEventoSemParametros = () => {
       } catch (err) {
         setError("Erro ao carregar eventos.");
         setLoading(false);
-
       }
     };
 
@@ -56,14 +50,12 @@ const TabelaEventoSemParametros = () => {
 
   const confirmDelete = async () => {
     try {
-      
-
       await deletarEvento(eventoToDelete.id); // Deleta o evento
-      setEventos(eventos.filter((evento) => evento.id !== eventoToDelete)); // Atualiza a lista de eventos
+      setEventos(eventos.filter((evento) => evento.id !== eventoToDelete.id)); // Atualiza a lista de eventos
       setIsModalOpen(false); // Fecha o modal
-      toast.success(`Evento "${eventoToDelete.descricao}" deletado com sucesso!`);
-
-
+      toast.success(
+        `Evento "${eventoToDelete.descricao}" deletado com sucesso!`
+      );
     } catch (err) {
       setError("Erro ao excluir evento.");
       setIsModalOpen(false); // Fecha o modal em caso de erro
@@ -75,7 +67,6 @@ const TabelaEventoSemParametros = () => {
   };
 
   if (loading) return <SpinnerLoading />;
-  
 
   return (
     <div className=" flex flex-col justify-center gap-20">
@@ -115,25 +106,25 @@ const TabelaEventoSemParametros = () => {
                 <FaEye size={20} />
               </button>
               <button
-                    className="bg-yellow-500 text-white p-2 rounded"
-                    data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Editar Evento"
-                    onClick={() =>
-                      navigate("/editar-evento", { state: { evento } })
-                    }
-                  >
-                    <FaEdit size={20} />
-                  </button>
-                  <Tooltip id="my-tooltip" />
-                  <button
-                    className="bg-red-500 text-white p-2 rounded"
-                    data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Deletar Evento"
-                    onClick={() => handleDelete(evento)}
-                  >
-                    <FaTrashAlt size={20} />
-                  </button>
-                  <Tooltip id="my-tooltip" />
+                className="bg-yellow-500 text-white p-2 rounded"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="Editar Evento"
+                onClick={() =>
+                  navigate("/editar-evento", { state: { evento } })
+                }
+              >
+                <FaEdit size={20} />
+              </button>
+              <Tooltip id="my-tooltip" />
+              <button
+                className="bg-red-500 text-white p-2 rounded"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="Deletar Evento"
+                onClick={() => handleDelete(evento)}
+              >
+                <FaTrashAlt size={20} />
+              </button>
+              <Tooltip id="my-tooltip" />
             </div>
           </div>
         ))}
@@ -232,7 +223,8 @@ const TabelaEventoSemParametros = () => {
         >
           <h2 className="text-2xl font-bold">Confirmar Exclusão</h2>
           <p className="text-lg font-semibold pt-4">
-            Tem certeza de que deseja excluir o evento "{eventoToDelete?.descricao}"?
+            Tem certeza de que deseja excluir o evento "
+            {eventoToDelete?.descricao}"?
           </p>
           <div className="flex flex-row justify-between pt-10">
             <button
