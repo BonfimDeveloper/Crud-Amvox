@@ -100,7 +100,7 @@ const EventoEdit = () => {
           <div className="flex flex-col gap-4">
             <button
               data-tooltip-id="my-tooltip"
-              data-tooltip-content="Voltar para Listagem de eventos"
+              data-tooltip-content="Salvar alterações"
               type="submit"
               className="w-full p-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-200"
             >
