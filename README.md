@@ -12,8 +12,9 @@ CRUD implementado para avaliação da equipe de seleção de desenvolvedores da 
 
 # PARA INSTALAR O PROJETO LOCALMENTE
 Abrir terminal na pasta do projeto
-1- npm install react@18 react-dom@18 
-2 - npm install
+#
+( Passo 1 - npm install react@18 react-dom@18 ) |
+#( Passo 2 - npm install )
 
 # ##################################################################
 # ##################################################################
